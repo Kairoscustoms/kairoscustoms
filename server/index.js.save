@@ -1,0 +1,69 @@
+const express = require("express");
+const cors = require("cors");
+const nodemailer = require("nodemailer");
+
+const app = express();
+const PORT = process.env.PORT || 3000;
+
+app.use(cors());
+app.use(express.json());
+
+app.get("/", (req, res) => {
+    res.send("Server is running on port " + PORT);
+});
+
+app.get("/gallery", (req, res) => {
+    res.json([
+        { url: "/Dogs_Front.png", title: "For All The Dogs Cavalier King Charles Crewneck (Front)" },
+        { url: "/Dogs_Back.png", title: "For All The Dogs Cavalier King Charles Crewneck (Back)" },
+        { url: "/Blonde_Front.png", title: "Frank Ocean Blonde Hoodie (Front)" },
+        { url: "/Blonde_Back.png", title: "Frank Ocean Blonde Hoodie (Back)" },
+        { url: "/Asap_Front.png", title: "Asap Rocky Rolling Loud 2023 Hoodie (Front)" },
+        { url: "/Asap_Back.png", title: "Asap Rocky Rolling Loud 2023 Hoodie (Back)" },
+        { url: "/Leclerc_Front.png", title: "Charles Leclerc F1 Helmet Hoodie (Front)" },
+        { url: "/Leclerc_Back.png", title: "Charles Leclerc F1 Helmet Hoodie (Back)" },
+        { url: "/Doberman_Front.png", title: "For All The Dogs Doberman Hoodie (Front)" },
+        { url: "/Doberman_Back.png", title: "For All The Dogs Doberman Hoodie (Back)" },
+        { url: "/Labrador_Front.png", title: "For All The Dogs Labrador Hoodie (Front)" },
+        { url: "/Labrador_Back.png", title: "For All The Dogs Labrador Hoodie (Back)" },
+        { url: "/Nikes_Front.png", title: "Frank Ocean Nikes Zip Up Hoodie (Front)" },
+        { url: "/Nikes_Back.png", title: "Frank Ocean Nikes Zip Up Hoodie (Back)" },
+        { url: "/Cactus_Front.png", title: "Travis Scott Cactus Jack Crewneck (Front)" },
+        { url: "/Cactus_Back.png", title: "Travis Scott Cactus Jack Crewneck (Back)" },
+        { url: "/Kairos_Front.png", title: "Kairos T-Shirt (Front)" },
+        { url: "/Kairos_Back.png", title: "Kairos T-Shirt (Back)" }
+    ]);
+});
+
+app.post("/send-email", async (req, res) => {
+    const { name, email, designDetails, inspoImages } = req.body;
+
+    const transporter = nodemailer.createTransport({
+        service: "gmail",
+        auth: {
+            user: "customskairos@gmail.com",
+            pass: "your-app-password-here", // Replace with your app password
+        },
+    });
+
+    const mailOptions = {
+        from: email,
+        to: "customskairos@gmail.com",
+        subject: "New Hoodie Request",
+        text: `Name: ${name}\nEmail: ${email}\nDesign Details: ${designDetails}\nInspo Images: ${inspoImages}`,
+    };
+
+    try {
+        await transporter.sendMail(mailOptions);
+        res.status(200).json({ message: "Request sent successfully" });
+    } catch (error) {
+        console.error("Error sending email:", error);
+        res.status(500).json({ message: "Failed to send request" });
+    }
+});
+
+// **Start Server**
+app.listen(PORT, () => {
+    console.log(`Server running on http://localhost:${PORT}`);
+});
+
