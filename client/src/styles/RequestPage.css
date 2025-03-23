@@ -1,0 +1,100 @@
+.request-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px;
+  min-height: 100vh;
+  background: linear-gradient(-45deg, #000, #222, #444, #000);
+  background-size: 400% 400%;
+  animation: gradientBG 10s ease infinite;
+  color: white;
+  text-align: center;
+}
+
+.request-title {
+  font-size: 60px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  font-family: 'InflatePTX', sans-serif;
+}
+
+.request-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+  max-width: 600px;
+}
+
+.request-form input,
+.request-form textarea {
+  padding: 12px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+}
+
+.request-submit {
+  padding: 12px;
+  font-size: 18px;
+  border: none;
+  border-radius: 5px;
+  background-color: white;
+  color: black;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.request-submit:hover {
+  background-color: gray;
+  color: white;
+}
+
+.pricing-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 18px;
+  border: 2px solid white;
+  border-radius: 5px;
+  background: transparent;
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.pricing-button:hover {
+  background: white;
+  color: black;
+}
+
+.pricing-details {
+  margin-top: 20px;
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 600px;
+  text-align: left;
+}
+
+.pricing-details h2 {
+  margin-top: 0;
+  font-size: 24px;
+}
+
+.pricing-details p,
+.pricing-details ul {
+  font-size: 16px;
+  margin: 10px 0;
+}
+
+.request-info {
+  margin-top: 30px;
+  font-size: 16px;
+}
+
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+

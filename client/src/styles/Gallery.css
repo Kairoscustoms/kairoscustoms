@@ -1,0 +1,84 @@
+html, body {
+  overflow: auto;
+}
+
+.gallery-container {
+  text-align: center;
+  background: linear-gradient(-45deg, #000000, #222222, #444444, #000000);
+  background-size: 400% 400%;
+  animation: gradientBG 10s ease infinite;
+  min-height: 100vh;
+  padding: 50px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: auto;
+}
+
+.gallery-title {
+  font-family: 'Blackletter', serif;
+  font-size: 100px;
+  color: white;
+  text-align: center;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.gallery-description {
+  font-size: 18px;
+  color: white;
+  max-width: 800px;
+  text-align: center;
+  margin: 10px auto 40px auto;
+}
+
+.gallery-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.hoodie-container {
+  text-align: center;
+  width: 100%;
+  max-width: 800px;
+}
+
+.hoodie-name {
+  font-size: 22px;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 10px;
+}
+
+.hoodie-images {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.hoodie-image {
+  width: 45%;
+  height: auto;
+  border-radius: 5px;
+}
+
+.hoodie-description {
+  color: white;
+  font-size: 16px;
+  text-align: center;
+  margin-top: 10px;
+}
+
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
