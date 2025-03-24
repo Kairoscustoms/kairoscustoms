@@ -23,7 +23,7 @@ function Home() {
           muted
           onEnded={() => setShowIntro(false)}
         >
-          <source src="/intro.mp4" type="video/mp4" />
+          <source src="/intro_vid.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
       ) : (
@@ -37,9 +37,9 @@ function Home() {
             <div className="contact-popup">
               <p className="contact-heading">Contact:</p>
               <p>
-                <a 
-                  href="https://www.instagram.com/kairos_customs/" 
-                  target="_blank" 
+                <a
+                  href="https://www.instagram.com/kairos_customs/"
+                  target="_blank"
                   rel="noopener noreferrer"
                   style={{ color: "white", textDecoration: "underline" }}
                 >
@@ -47,8 +47,8 @@ function Home() {
                 </a>
               </p>
               <p>
-                <a 
-                  href="mailto:customskairos@gmail.com" 
+                <a
+                  href="mailto:customskairos@gmail.com"
                   style={{ color: "white", textDecoration: "underline" }}
                 >
                   Email - customskairos@gmail.com
