@@ -14,12 +14,11 @@ function Home() {
     }
   }, []);
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowIntro(false);
-    }, 4000);
-    return () => clearTimeout(timer);
-  }, []);
+useEffect(() => {
+  if (window.innerWidth < 768) {
+    setVideoSrc("/intro_phone.mp4");
+  }
+}, []);
 
   return (
     <div className="home-container">
@@ -28,6 +27,8 @@ function Home() {
           className="intro-video"
           autoPlay
           muted
+          playInline
+          webkit-playsinline
           onEnded={() => setShowIntro(false)}
         >
           <source src={videoSrc} type="video/mp4" />
