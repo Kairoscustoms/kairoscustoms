@@ -27,12 +27,12 @@ html, body {
 }
 
 .intro-video {
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
   position: absolute;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
-  object-fit: cover;
   z-index: 10;
 }
 
@@ -138,8 +138,23 @@ html, body {
   100% { background-position: 0% 50%; }
 }
 
-/* Mobile Styles */
 @media only screen and (max-width: 768px) {
+  .intro-video {
+    display: none;
+  }
+  .mobile-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    z-index: 1;
+  }
+  .overlay {
+    position: relative;
+    z-index: 2;
+  }
   .home-title {
     font-size: 50px;
   }
@@ -154,12 +169,8 @@ html, body {
     width: 100%;
     font-size: 16px;
   }
-  .intro-video {
-    height: auto;
-  }
-  .left-image,
-  .right-image {
-    width: 30%;
+  .left-image, .right-image {
+    display: none;
   }
 }
 
