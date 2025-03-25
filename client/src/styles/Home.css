@@ -36,6 +36,7 @@ html, body {
   cursor: pointer;
   z-index: 100;
 }
+
 .bar {
   width: 30px;
   height: 4px;
@@ -54,6 +55,7 @@ html, body {
   z-index: 100;
   text-align: left;
 }
+
 .contact-heading {
   font-weight: bold;
   margin-bottom: 5px;
@@ -69,6 +71,7 @@ html, body {
   position: relative;
   z-index: 20;
 }
+
 .home-subtitle {
   font-size: 24px;
   color: white;
@@ -76,6 +79,7 @@ html, body {
   position: relative;
   z-index: 20;
 }
+
 .buttons-container {
   display: flex;
   flex-direction: column;
@@ -85,6 +89,7 @@ html, body {
   position: relative;
   z-index: 20;
 }
+
 .home-button {
   background-color: white;
   color: black;
@@ -97,21 +102,25 @@ html, body {
   text-align: center;
   border-radius: 5px;
 }
+
 .home-button:hover {
   background-color: gray;
   color: white;
 }
 
-.left-image, .right-image {
+.left-image,
+.right-image {
   position: absolute;
   bottom: 0;
   width: 20%;
   height: auto;
   z-index: 20;
 }
+
 .left-image {
   left: 3%;
 }
+
 .right-image {
   right: 3%;
 }
@@ -120,5 +129,35 @@ html, body {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
+}
+
+/* Responsive Rules for Smaller Screens */
+@media only screen and (max-width: 768px) {
+  .intro-video {
+    height: auto;
+  }
+
+  .home-title {
+    font-size: 50px;
+  }
+
+  .home-subtitle {
+    font-size: 16px;
+  }
+
+  .buttons-container {
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  .home-button {
+    width: 100%;
+    font-size: 16px;
+  }
+
+  .left-image,
+  .right-image {
+    width: 30%;
+  }
 }
 
