@@ -14,12 +14,6 @@ function Home() {
     }
   }, []);
 
-useEffect(() => {
-  if (window.innerWidth < 768) {
-    setVideoSrc("/intro_phone.mp4");
-  }
-}, []);
-
   return (
     <div className="home-container">
       {showIntro ? (
@@ -27,8 +21,8 @@ useEffect(() => {
           className="intro-video"
           autoPlay
           muted
-          playInline
-          webkit-playsinline
+          playsInline
+          webkit-playsinline="true"
           onEnded={() => setShowIntro(false)}
         >
           <source src={videoSrc} type="video/mp4" />
