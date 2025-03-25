@@ -5,7 +5,14 @@ import "../styles/Home.css";
 function Home() {
   const [showIntro, setShowIntro] = useState(true);
   const [showContact, setShowContact] = useState(false);
+  const [videoSrc, setVideoSrc] = useState("/intro_vid.mp4");
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (window.innerWidth < 768) {
+      setVideoSrc("/intro_phone.mp4");
+    }
+  }, []);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -23,7 +30,7 @@ function Home() {
           muted
           onEnded={() => setShowIntro(false)}
         >
-          <source src="/intro_vid.mp4" type="video/mp4" />
+          <source src={videoSrc} type="video/mp4" />
           Your browser does not support the video tag.
         </video>
       ) : (
