@@ -11,7 +11,16 @@ function Home() {
   useEffect(() => {
     if (window.innerWidth < 768) {
       setVideoSrc("/intro_phone.mp4");
+    } else {
+      setVideoSrc("/intro_vid.mp4");
     }
+  }, []);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowIntro(false);
+    }, 4000);
+    return () => clearTimeout(timer);
   }, []);
 
   return (
