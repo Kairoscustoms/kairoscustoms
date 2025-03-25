@@ -4,8 +4,8 @@ import "../styles/Home.css";
 
 function Home() {
   const [showIntro, setShowIntro] = useState(true);
-  const [showContact, setShowContact] = useState(false);
   const [videoSrc, setVideoSrc] = useState("/intro_vid.mp4");
+  const [showContact, setShowContact] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {

@@ -1,3 +1,10 @@
+@font-face {
+  font-family: 'InflatePTX';
+  src: url('../fonts/InflateptxChrome-X3oPg.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 html, body {
   margin: 0;
   padding: 0;
@@ -131,30 +138,25 @@ html, body {
   100% { background-position: 0% 50%; }
 }
 
-/* Responsive Rules for Smaller Screens */
+/* Mobile Styles */
 @media only screen and (max-width: 768px) {
-  .intro-video {
-    height: auto;
-  }
-
   .home-title {
     font-size: 50px;
   }
-
   .home-subtitle {
     font-size: 16px;
   }
-
   .buttons-container {
     width: 90%;
     margin: 0 auto;
   }
-
   .home-button {
     width: 100%;
     font-size: 16px;
   }
-
+  .intro-video {
+    height: auto;
+  }
   .left-image,
   .right-image {
     width: 30%;
