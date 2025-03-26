@@ -14,11 +14,11 @@ html, body {
 .home-container {
   position: relative;
   min-height: 100vh;
-  background: linear-gradient(-45deg, #000000, #222222, #444444, #000000);
+  background: linear-gradient(-45deg, #000, #222, #444, #000);
   background-size: 400% 400%;
   animation: gradientBG 10s ease infinite;
-  box-sizing: border-box;
   overflow: hidden;
+  box-sizing: border-box;
 }
 
 @keyframes gradientBG {
@@ -42,7 +42,6 @@ html, body {
   z-index: 2;
   padding: 20px;
   text-align: center;
-  box-sizing: border-box;
 }
 
 .hamburger {
@@ -82,7 +81,7 @@ html, body {
   font-size: 80px;
   color: white;
   text-transform: uppercase;
-  text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+  text-shadow: 3px 3px 5px rgba(0,0,0,0.5);
   margin: 20px 0 10px;
   position: relative;
   z-index: 2;
@@ -127,8 +126,8 @@ html, body {
 .right-image {
   position: absolute;
   bottom: 0;
-  height: auto;
   z-index: 2;
+  height: auto;
 }
 
 .left-image {
@@ -152,7 +151,7 @@ html, body {
     left: 5%;
     width: 90%;
     height: auto;
-    object-fit: contain;
+    object-fit: cover;
     z-index: 1;
   }
   .overlay {
@@ -175,11 +174,11 @@ html, body {
     font-size: 16px;
   }
   .hamburger {
-    position: fixed !important;
-    top: 10px !important;
-    left: 10px !important;
-    margin: 0 !important;
-    z-index: 9999 !important;
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    margin: 0;
+    z-index: 9999;
   }
   .left-image,
   .right-image {
