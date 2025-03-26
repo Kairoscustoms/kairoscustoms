@@ -84,9 +84,10 @@ html, body {
   font-size: 80px;
   color: white;
   text-transform: uppercase;
-  text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+  text-shadow: 3px 3px 5px rgba(0,0,0,0.5);
   margin-bottom: 10px;
   position: relative;
+  z-index: 20;
 }
 
 .home-subtitle {
@@ -94,6 +95,7 @@ html, body {
   color: white;
   margin-bottom: 30px;
   position: relative;
+  z-index: 20;
 }
 
 .buttons-container {
@@ -103,6 +105,7 @@ html, body {
   align-items: center;
   margin-top: 20px;
   position: relative;
+  z-index: 20;
 }
 
 .home-button {
@@ -129,6 +132,7 @@ html, body {
   bottom: 0;
   width: 20%;
   height: auto;
+  z-index: 20;
 }
 
 .left-image {
@@ -146,8 +150,8 @@ html, body {
   .mobile-bg {
     position: absolute;
     bottom: 0;
-    left: 10%;
-    width: 40vw;
+    left: 5%;
+    width: 90%;
     height: auto;
     object-fit: contain;
     z-index: 1;
@@ -156,7 +160,14 @@ html, body {
     position: relative;
     z-index: 2;
   }
-   .home-title {
+  .hamburger {
+    position: fixed !important;
+    top: 10px !important;
+    left: 10px !important;
+    margin: 0 !important;
+    z-index: 9999 !important;
+  }
+  .home-title {
     font-size: 50px;
   }
   .home-subtitle {
@@ -169,13 +180,6 @@ html, body {
   .home-button {
     width: 100%;
     font-size: 16px;
-  }
-  .hamburger {
-    position: fixed !important;
-    top: 10px !important;
-    left: 10px !important;
-    margin: 0 !important;
-    z-index: 9999 !important;
   }
   .left-image,
   .right-image {
