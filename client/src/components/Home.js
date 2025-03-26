@@ -3,13 +3,9 @@ import { useNavigate } from "react-router-dom";
 import "../styles/Home.css";
 
 function Home() {
-  const [isMobile, setIsMobile] = useState(false);
   const [showContact, setShowContact] = useState(false);
   const navigate = useNavigate();
-
-  useEffect(() => {
-    setIsMobile(window.innerWidth < 768);
-  }, []);
+  const isMobile = window.innerWidth < 768;
 
   return (
     <div className="home-container">
@@ -78,7 +74,7 @@ function Home() {
             Magazine
           </button>
         </div>
-        { !isMobile && (
+        {!isMobile && (
           <>
             <img src="/home_left.png" alt="Left Hoodie" className="left-image" />
             <img src="/home_right.png" alt="Right Hoodie" className="right-image" />

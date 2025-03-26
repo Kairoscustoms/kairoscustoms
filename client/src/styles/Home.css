@@ -144,12 +144,11 @@ html, body {
   }
   .mobile-bg {
     position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80vw;
+    bottom: 0;
+    left: 10%;
+    width: 40vw;
     height: auto;
-    object-fit: cover;
+    object-fit: contain;
     z-index: 1;
   }
   .overlay {
@@ -170,7 +169,8 @@ html, body {
     width: 100%;
     font-size: 16px;
   }
-  .left-image, .right-image {
+  .left-image,
+  .right-image {
     display: none;
   }
 }
