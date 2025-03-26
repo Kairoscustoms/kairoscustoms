@@ -137,7 +137,6 @@ html, body {
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
-
 @media only screen and (max-width: 768px) {
   .intro-video {
     display: none;
@@ -152,8 +151,17 @@ html, body {
     z-index: 1;
   }
   .overlay {
+    margin-top: 0;   
+    padding-top: 0;  
     position: relative;
     z-index: 2;
+  }
+  .hamburger {
+    position: absolute;
+    top: 10px;       
+    left: 10px;       
+    cursor: pointer;
+    z-index: 100;
   }
   .home-title {
     font-size: 50px;
