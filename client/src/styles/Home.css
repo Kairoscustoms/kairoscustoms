@@ -27,12 +27,12 @@ html, body {
 }
 
 .intro-video {
-  width: 100%;
-  height: 100vh;
-  object-fit: cover;
   position: absolute;
   top: 0;
   left: 0;
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
   z-index: 10;
 }
 
@@ -138,7 +138,6 @@ html, body {
   100% { background-position: 0% 50%; }
 }
 
-/* Mobile Overrides */
 @media only screen and (max-width: 768px) {
   .intro-video {
     display: none;
@@ -172,11 +171,11 @@ html, body {
     width: 100%;
     font-size: 16px;
   }
- .hamburger {
+  .hamburger {
     position: fixed !important;
-    top: 0px !important;
-    left: 0px !important;
-    margin: 10px;
+    top: 10px !important;
+    left: 10px !important;
+    margin: 0 !important;
     z-index: 9999 !important;
   }
   .left-image,

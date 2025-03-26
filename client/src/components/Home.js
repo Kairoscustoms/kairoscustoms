@@ -3,24 +3,38 @@ import { useNavigate } from "react-router-dom";
 import "../styles/Home.css";
 
 function Home() {
+  const [showIntro, setShowIntro] = useState(true);
+  const [videoSrc, setVideoSrc] = useState("/intro_vid.mp4");
   const [showContact, setShowContact] = useState(false);
   const navigate = useNavigate();
   const isMobile = window.innerWidth < 768;
 
+  useEffect(() => {
+    if (isMobile) {
+      setVideoSrc("/intro_phone.mp4");
+    }
+  }, [isMobile]);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowIntro(false);
+    }, 4000);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <div className="home-container">
-      {isMobile ? (
-        <img src="/home_left.png" alt="Background" className="mobile-bg" />
-      ) : (
+      {/* On desktop, show the intro video overlay; on mobile, no video */}
+      {!isMobile && showIntro && (
         <video
           className="intro-video"
           autoPlay
           muted
           playsInline
           webkit-playsinline="true"
-          onEnded={() => {}}
+          onEnded={() => setShowIntro(false)}
         >
-          <source src="/intro_vid.mp4" type="video/mp4" />
+          <source src={videoSrc} type="video/mp4" />
           Your browser does not support the video tag.
         </video>
       )}
@@ -74,6 +88,7 @@ function Home() {
             Magazine
           </button>
         </div>
+        {/* On desktop, show side images; on mobile, hide them */}
         {!isMobile && (
           <>
             <img src="/home_left.png" alt="Left Hoodie" className="left-image" />
