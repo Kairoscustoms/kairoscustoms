@@ -138,6 +138,7 @@ html, body {
   100% { background-position: 0% 50%; }
 }
 
+/* Mobile Overrides */
 @media only screen and (max-width: 768px) {
   .intro-video {
     display: none;
