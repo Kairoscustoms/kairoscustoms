@@ -10,7 +10,6 @@ function Home() {
   const isMobile = window.innerWidth < 768;
 
   useEffect(() => {
-    // On mobile, we won't show a video at all.
     if (isMobile) {
       setVideoSrc("");
       setShowIntro(false);
@@ -18,7 +17,6 @@ function Home() {
   }, [isMobile]);
 
   useEffect(() => {
-    // On desktop, hide the video after 4 seconds
     if (!isMobile) {
       const timer = setTimeout(() => {
         setShowIntro(false);
