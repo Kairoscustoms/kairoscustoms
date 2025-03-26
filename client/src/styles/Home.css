@@ -42,6 +42,7 @@ html, body {
   z-index: 2;
   padding: 20px;
   text-align: center;
+  box-sizing: border-box;
 }
 
 .hamburger {
@@ -148,10 +149,10 @@ html, body {
     display: block;
     position: absolute;
     bottom: 0;
-    left: 5%;
-    width: 90%;
+    left: 0;
+    width: 40%;
     height: auto;
-    object-fit: cover;
+    object-fit: contain;
     z-index: 1;
   }
   .overlay {
@@ -174,11 +175,11 @@ html, body {
     font-size: 16px;
   }
   .hamburger {
-    position: fixed;
-    top: 10px;
-    left: 10px;
-    margin: 0;
-    z-index: 9999;
+    position: fixed !important;
+    top: 10px !important;
+    left: 10px !important;
+    margin: 0 !important;
+    z-index: 9999 !important;
   }
   .left-image,
   .right-image {
