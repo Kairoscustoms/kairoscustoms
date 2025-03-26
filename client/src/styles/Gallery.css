@@ -16,12 +16,11 @@ html, body {
 }
 
 .gallery-title {
-  font-family: 'Blackletter', serif;
-  font-size: 100px;
+  font-family: 'InflatePTX', sans-serif;
+  font-size: 80px;
   color: white;
   text-align: center;
-  margin-bottom: 10px;
-  text-transform: uppercase;
+  margin: 20px 0;
 }
 
 .gallery-description {
@@ -82,3 +81,8 @@ html, body {
   100% { background-position: 0% 50%; }
 }
 
+@media only screen and (max-width: 768px) {
+  .gallery-title {
+    font-size: 40px;
+  }
+}
