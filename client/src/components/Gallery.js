@@ -4,8 +4,8 @@ import "../styles/Gallery.css";
 const galleryItems = [
   {
     name: "For All The Dogs Cavalier King Charles Crewneck",
-    front: "/For_All_The_Dogs_Cavalier_King_Charles_Crewneck_Front.png",
-    back: "/For_All_The_Dogs_Cavalier_King_Charles_Crewneck_Back.png",
+    front: "/Dogs_Front.png",
+    back: "/Dogs_Back.png",
     blank: "H&M (Dark Gray)",
     price: "$100"
   },
@@ -69,8 +69,8 @@ const galleryItems = [
     name: "Drake Take Care Hoodie",
     front: "/Drake_Front.png",
     back: "/Drake_Back.png",
-    blank: "N/A",
-    price: "$?"
+    blank: "Obey",
+    price: "$140"
   }
 ];
 
