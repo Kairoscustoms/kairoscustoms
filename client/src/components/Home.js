@@ -17,9 +17,9 @@ function Home() {
     }
   }, [isMobile]);
 
-  return (
-    <div className="home-container">
-      {!isMobile && showIntro && (
+  if (!isMobile && showIntro) {
+    return (
+      <div className="home-container">
         <video
           className="intro-video"
           autoPlay
@@ -30,9 +30,19 @@ function Home() {
           <source src="/intro_vid.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
-      )}
-      {isMobile && (
+      </div>
+    );
+  }
+
+  return (
+    <div className="home-container">
+      {isMobile ? (
         <img src="/home_left.png" alt="Mobile Background" className="mobile-bg" />
+      ) : (
+        <>
+          <img src="/home_left.png" alt="Left Hoodie" className="left-image" />
+          <img src="/home_right.png" alt="Right Hoodie" className="right-image" />
+        </>
       )}
       <div className="overlay">
         <div className="hamburger" onClick={() => setShowContact(!showContact)}>
@@ -84,12 +94,6 @@ function Home() {
             Magazine
           </button>
         </div>
-        {!isMobile && !showIntro && (
-          <>
-            <img src="/home_left.png" alt="Left Hoodie" className="left-image" />
-            <img src="/home_right.png" alt="Right Hoodie" className="right-image" />
-          </>
-        )}
       </div>
     </div>
   );
