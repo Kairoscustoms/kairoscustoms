@@ -154,10 +154,8 @@ html, body {
   .overlay {
     position: relative;
     z-index: 2;
-    margin-top: 0;
-    padding-top: 0;
   }
-  .home-title {
+   .home-title {
     font-size: 50px;
   }
   .home-subtitle {
