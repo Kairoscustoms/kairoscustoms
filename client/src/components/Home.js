@@ -10,7 +10,6 @@ function Home() {
   const isMobile = window.innerWidth < 768;
 
   useEffect(() => {
-    // On mobile, we won't show a video at all.
     if (isMobile) {
       setVideoSrc("");
       setShowIntro(false);
@@ -18,7 +17,6 @@ function Home() {
   }, [isMobile]);
 
   useEffect(() => {
-    // On desktop, hide the video after 4 seconds
     if (!isMobile) {
       const timer = setTimeout(() => {
         setShowIntro(false);
@@ -29,6 +27,7 @@ function Home() {
 
   return (
     <div className="home-container">
+      {/* Desktop: show video only until intro is done */}
       {!isMobile && showIntro && (
         <video
           className="intro-video"
@@ -42,63 +41,66 @@ function Home() {
           Your browser does not support the video tag.
         </video>
       )}
-      <div className="overlay">
-        <div className="hamburger" onClick={() => setShowContact(!showContact)}>
-          <div className="bar"></div>
-          <div className="bar"></div>
-          <div className="bar"></div>
-        </div>
-        {showContact && (
-          <div className="contact-popup">
-            <p className="contact-heading">Contact:</p>
-            <p>
-              <a
-                href="https://www.instagram.com/kairos_customs/"
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{ color: "white", textDecoration: "underline" }}
-              >
-                Instagram - Kairos_Customs
-              </a>
-            </p>
-            <p>
-              <a
-                href="mailto:customskairos@gmail.com"
-                style={{ color: "white", textDecoration: "underline" }}
-              >
-                Email - customskairos@gmail.com
-              </a>
-            </p>
+      {/* Show overlay only after intro video is done (on desktop) or always on mobile */}
+      {(isMobile || !showIntro) && (
+        <div className="overlay">
+          <div className="hamburger" onClick={() => setShowContact(!showContact)}>
+            <div className="bar"></div>
+            <div className="bar"></div>
+            <div className="bar"></div>
           </div>
-        )}
-        <h1 className="home-title">Kairos Customs</h1>
-        <p className="home-subtitle">Hand Painted Hoodies</p>
-        <div className="buttons-container">
-          <button className="home-button" onClick={() => navigate("/gallery")}>
-            Gallery
-          </button>
-          <button className="home-button" onClick={() => navigate("/request")}>
-            Request
-          </button>
-          <button
-            className="home-button"
-            onClick={() =>
-              window.open(
-                "https://mixam.com/print-on-demand/6772231c4ee31e3ccce9913f",
-                "_blank"
-              )
-            }
-          >
-            Magazine
-          </button>
+          {showContact && (
+            <div className="contact-popup">
+              <p className="contact-heading">Contact:</p>
+              <p>
+                <a
+                  href="https://www.instagram.com/kairos_customs/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ color: "white", textDecoration: "underline" }}
+                >
+                  Instagram - Kairos_Customs
+                </a>
+              </p>
+              <p>
+                <a
+                  href="mailto:customskairos@gmail.com"
+                  style={{ color: "white", textDecoration: "underline" }}
+                >
+                  Email - customskairos@gmail.com
+                </a>
+              </p>
+            </div>
+          )}
+          <h1 className="home-title">Kairos Customs</h1>
+          <p className="home-subtitle">Hand Painted Hoodies</p>
+          <div className="buttons-container">
+            <button className="home-button" onClick={() => navigate("/gallery")}>
+              Gallery
+            </button>
+            <button className="home-button" onClick={() => navigate("/request")}>
+              Request
+            </button>
+            <button
+              className="home-button"
+              onClick={() =>
+                window.open(
+                  "https://mixam.com/print-on-demand/6772231c4ee31e3ccce9913f",
+                  "_blank"
+                )
+              }
+            >
+              Magazine
+            </button>
+          </div>
+          {!isMobile && !showIntro && (
+            <>
+              <img src="/home_left.png" alt="Left Hoodie" className="left-image" />
+              <img src="/home_right.png" alt="Right Hoodie" className="right-image" />
+            </>
+          )}
         </div>
-        {!isMobile && !showIntro && (
-          <>
-            <img src="/home_left.png" alt="Left Hoodie" className="left-image" />
-            <img src="/home_right.png" alt="Right Hoodie" className="right-image" />
-          </>
-        )}
-      </div>
+      )}
     </div>
   );
 }
