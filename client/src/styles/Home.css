@@ -26,6 +26,12 @@ html, body {
   box-sizing: border-box;
 }
 
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
 .intro-video {
   position: absolute;
   top: 0;
@@ -34,6 +40,11 @@ html, body {
   height: 100vh;
   object-fit: cover;
   z-index: 10;
+}
+
+.overlay {
+  position: relative;
+  z-index: 20;
 }
 
 .hamburger {
@@ -76,7 +87,6 @@ html, body {
   text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
   margin-bottom: 10px;
   position: relative;
-  z-index: 20;
 }
 
 .home-subtitle {
@@ -84,7 +94,6 @@ html, body {
   color: white;
   margin-bottom: 30px;
   position: relative;
-  z-index: 20;
 }
 
 .buttons-container {
@@ -94,7 +103,6 @@ html, body {
   align-items: center;
   margin-top: 20px;
   position: relative;
-  z-index: 20;
 }
 
 .home-button {
@@ -121,7 +129,6 @@ html, body {
   bottom: 0;
   width: 20%;
   height: auto;
-  z-index: 20;
 }
 
 .left-image {
@@ -130,12 +137,6 @@ html, body {
 
 .right-image {
   right: 3%;
-}
-
-@keyframes gradientBG {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
 }
 
 @media only screen and (max-width: 768px) {
