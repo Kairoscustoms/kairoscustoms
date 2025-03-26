@@ -82,7 +82,7 @@ html, body {
   font-size: 80px;
   color: white;
   text-transform: uppercase;
-  text-shadow: 3px 3px 5px rgba(0,0,0,0.5);
+  text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
   margin: 20px 0 10px;
   position: relative;
   z-index: 2;
@@ -141,6 +141,7 @@ html, body {
   width: 20%;
 }
 
+/* Mobile Overrides */
 @media only screen and (max-width: 768px) {
   .intro-video {
     display: none;
@@ -150,15 +151,16 @@ html, body {
     position: absolute;
     bottom: 0;
     left: 5%;
-    width: 40%;
+    width: 30%;
     height: auto;
     object-fit: contain;
-    transform: translateY(-50%);
     z-index: 1;
   }
   .overlay {
     position: relative;
     z-index: 2;
+    padding: 20px 10px 0 10px;
+    margin-bottom: -50px;
   }
   .home-title {
     font-size: 50px;
@@ -169,7 +171,6 @@ html, body {
   .buttons-container {
     width: 90%;
     margin: 0 auto;
-    margin-bottom: 50px;
   }
   .home-button {
     width: 100%;
