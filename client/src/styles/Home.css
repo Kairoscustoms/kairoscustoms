@@ -27,7 +27,6 @@ html, body {
   100% { background-position: 0% 50%; }
 }
 
-/* Desktop Intro Video */
 .intro-video {
   position: fixed;
   top: 0;
@@ -42,6 +41,7 @@ html, body {
   position: relative;
   z-index: 2;
   padding: 20px;
+  margin-top: 20vh;
   text-align: center;
   box-sizing: border-box;
 }
@@ -83,7 +83,7 @@ html, body {
   font-size: 80px;
   color: white;
   text-transform: uppercase;
-  text-shadow: 3px 3px 5px rgba(0,0,0,0.5);
+  text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
   margin: 20px 0 10px;
   position: relative;
   z-index: 2;
