@@ -27,8 +27,9 @@ html, body {
   100% { background-position: 0% 50%; }
 }
 
+/* Desktop Intro Video */
 .intro-video {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -82,7 +83,7 @@ html, body {
   font-size: 80px;
   color: white;
   text-transform: uppercase;
-  text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+  text-shadow: 3px 3px 5px rgba(0,0,0,0.5);
   margin: 20px 0 10px;
   position: relative;
   z-index: 2;
@@ -158,13 +159,7 @@ html, body {
   .overlay {
     position: relative;
     z-index: 2;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    padding: 10px;
-    box-sizing: border-box;
+    padding: 20px 10px;
     text-align: center;
   }
   .home-title {
