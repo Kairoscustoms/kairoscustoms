@@ -172,9 +172,12 @@ html, body {
     width: 100%;
     font-size: 16px;
   }
-  .hamburger {
-    top: 10px !important;
-    left: 10px !important;
+ .hamburger {
+    position: fixed !important;
+    top: 0px !important;
+    left: 0px !important;
+    margin: 10px;
+    z-index: 9999 !important;
   }
   .left-image,
   .right-image {
