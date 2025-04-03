@@ -77,3 +77,21 @@ app.get("/payment-cancel", (req, res) => {
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });
+app.get("/design/:designId", (req, res) => {
+  const designId = req.params.designId;
+  res.json({
+    id: designId,
+    imageUrl: "/design_placeholder.png",
+    description: "This is a sample design preview."
+  });
+});
+
+app.post("/design/:designId/respond", (req, res) => {
+  const { response, feedback } = req.body;
+  if (response === "approved") {
+    res.json({ success: true, approvalUrl: "https://www.sandbox.paypal.com/checkoutnow?token=TEST123" });
+  } else {
+    res.json({ success: true });
+  }
+});
+
