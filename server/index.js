@@ -66,6 +66,13 @@ if (process.env.NODE_ENV === "production") {
     res.sendFile(path.resolve(__dirname, "../client/build", "index.html"));
   });
 }
+app.get("/payment-success", (req, res) => {
+  res.send("<h1>Payment Successful</h1><p>Thank you for your purchase.</p>");
+});
+
+app.get("/payment-cancel", (req, res) => {
+  res.send("<h1>Payment Cancelled</h1><p>Your payment has been cancelled.</p>");
+});
 
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
