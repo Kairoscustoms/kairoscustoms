@@ -6,7 +6,7 @@ const multer = require("multer");
 const path = require("path");
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5001;
 
 app.use(cors());
 app.use(express.json());
@@ -22,6 +22,7 @@ app.post("/send-email", upload.array("images"), async (req, res) => {
 
   const { name, email, message } = req.body;
   if (!name || !email || !message) {
+    console.error("Missing required fields");
     return res.status(400).json({ error: "Missing required fields" });
   }
 
@@ -66,32 +67,8 @@ if (process.env.NODE_ENV === "production") {
     res.sendFile(path.resolve(__dirname, "../client/build", "index.html"));
   });
 }
-app.get("/payment-success", (req, res) => {
-  res.send("<h1>Payment Successful</h1><p>Thank you for your purchase.</p>");
-});
-
-app.get("/payment-cancel", (req, res) => {
-  res.send("<h1>Payment Cancelled</h1><p>Your payment has been cancelled.</p>");
-});
 
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
-});
-app.get("/design/:designId", (req, res) => {
-  const designId = req.params.designId;
-  res.json({
-    id: designId,
-    imageUrl: "/design_placeholder.png",
-    description: "This is a sample design preview."
-  });
-});
-
-app.post("/design/:designId/respond", (req, res) => {
-  const { response, feedback } = req.body;
-  if (response === "approved") {
-    res.json({ success: true, approvalUrl: "https://www.sandbox.paypal.com/checkoutnow?token=TEST123" });
-  } else {
-    res.json({ success: true });
-  }
 });
 
