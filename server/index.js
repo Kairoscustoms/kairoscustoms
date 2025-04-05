@@ -13,7 +13,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 const storage = multer.memoryStorage();
-const upload = multer({ storage });
+const upload = multer({ storage: storage });
 
 app.post("/send-email", upload.array("images"), async (req, res) => {
   const { name, email, message } = req.body;
@@ -65,14 +65,14 @@ app.get("/test", (req, res) => {
   res.json({ message: "Test endpoint working" });
 });
 
+app.get("/", (req, res) => {
+  res.redirect("/design/123?clientName=Alice+Smith&price=$10&imageUrl=/AS_DESIGN.png");
+});
+
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "../client/build")));
   app.get("*", (req, res) => {
     res.sendFile(path.resolve(__dirname, "../client/build", "index.html"));
-  });
-} else {
-  app.get("/", (req, res) => {
-    res.send("API is running on port " + PORT);
   });
 }
 
