@@ -1,26 +1,24 @@
+const path = require('path');
+
 module.exports = {
   webpack: {
     configure: (webpackConfig) => {
+      webpackConfig.resolve.plugins = webpackConfig.resolve.plugins.filter(
+        plugin => plugin.constructor.name !== 'ModuleScopePlugin'
+      );
+
       webpackConfig.resolve.fallback = {
         ...webpackConfig.resolve.fallback,
-        path: require.resolve("path-browserify"),
-        zlib: require.resolve("browserify-zlib"),
-        net: false,
-        http: require.resolve("stream-http"),
-        os: require.resolve("os-browserify/browser"),
-        util: require.resolve("util/"),
-        fs: false,
-        crypto: require.resolve("crypto-browserify"),
-        url: require.resolve("url/"),
-        dns: false,
-        child_process: false,
-        https: require.resolve("https-browserify"),
-        stream: require.resolve("stream-browserify"),
-        tls: false,
-        querystring: require.resolve("querystring-es3"),
-        buffer: require.resolve("buffer/"),
-        assert: require.resolve("assert/")
+        "path": require.resolve("path-browserify"),
+        "crypto": require.resolve("crypto-browserify"),
+        "stream": require.resolve("stream-browserify"),
+        "http": require.resolve("stream-http"),
+        "https": require.resolve("https-browserify"),
+        "os": require.resolve("os-browserify/browser"),
+        "zlib": require.resolve("browserify-zlib"),
+        "assert": require.resolve("assert/")
       };
+
       return webpackConfig;
     }
   }

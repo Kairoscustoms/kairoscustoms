@@ -5,6 +5,7 @@
     "node": ">=14.x"
   },
   "scripts": {
+    "dev": "nodemon server/index.js",
     "start": "node server/index.js",
     "postinstall": "cd client && npm install && npm run build"
   },
