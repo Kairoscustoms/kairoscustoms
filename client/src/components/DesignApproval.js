@@ -8,7 +8,8 @@ function DesignApproval() {
   const queryParams = new URLSearchParams(location.search);
   const clientName = queryParams.get("clientName") || "Valued Client";
   const price = queryParams.get("price") || "Price not set";
-  const customImageUrl = queryParams.get("imageUrl"); // e.g., "/AS_DESIGN.png"
+  const customImageUrl = queryParams.get("imageUrl");
+
   const [design, setDesign] = useState(null);
   const [error, setError] = useState(null);
   const [showPayPal, setShowPayPal] = useState(false);
@@ -53,19 +54,21 @@ function DesignApproval() {
       window.paypal.Buttons({
         createOrder: function (data, actions) {
           return actions.order.create({
-            purchase_units: [{
-              amount: { value: finalAmount },
-              shipping: {
-                name: { full_name: shippingName },
-                address: {
-                  address_line_1: shippingAddress,
-                  admin_area_2: shippingCity, // City
-                  admin_area_1: shippingState,
-                  postal_code: shippingZip,
-                  country_code: countryCode
-                }
-              }
-            }]
+            purchase_units: [
+              {
+                amount: { value: finalAmount },
+                shipping: {
+                  name: { full_name: shippingName },
+                  address: {
+                    address_line_1: shippingAddress,
+                    admin_area_2: shippingCity, // City
+                    admin_area_1: shippingState, // State
+                    postal_code: shippingZip,
+                    country_code: countryCode,
+                  },
+                },
+              },
+            ],
           });
         },
         onApprove: function (data, actions) {
@@ -75,7 +78,7 @@ function DesignApproval() {
         },
         onError: function (err) {
           console.error("PayPal Checkout onError", err);
-        }
+        },
       }).render("#paypal-button-container");
     }
   }, [
@@ -86,7 +89,7 @@ function DesignApproval() {
     shippingCity,
     shippingState,
     shippingZip,
-    shippingCountry
+    shippingCountry,
   ]);
 
   const handleApproveAndPay = () => {
@@ -119,18 +122,23 @@ Address: ${shippingAddress}
 City: ${shippingCity}
 State: ${shippingState}
 Zip: ${shippingZip}
-Country: ${countryCode}`
-      })
+Country: ${countryCode}`,
+      }),
     })
       .then((res) => {
-        if (!res.ok) throw new Error("Network response was not ok");
+        if (!res.ok) {
+          return res.text().then((text) => {
+            throw new Error(text);
+          });
+        }
         return res.json();
       })
       .then(() => {
         setShowShippingForm(false);
         setShowPayPal(true);
       })
-      .catch(() => {
+      .catch((error) => {
+        console.error("Shipping submission error:", error);
         setSubmitStatus("Failed to submit shipping information");
       });
   };
@@ -147,8 +155,8 @@ Country: ${countryCode}`
       body: JSON.stringify({
         name: declineName,
         email: declineEmail,
-        message: `Design ID ${designId} was declined. Feedback: ${declineFeedback}`
-      })
+        message: `Design ID ${designId} was declined. Feedback: ${declineFeedback}`,
+      }),
     })
       .then((res) => {
         if (!res.ok) throw new Error("Network response was not ok");
@@ -165,11 +173,7 @@ Country: ${countryCode}`
 
   if (error) return <div>Error: {error}</div>;
   if (!design)
-    return (
-      <div style={{ color: "white", padding: "20px" }}>
-        Loading design...
-      </div>
-    );
+    return <div style={{ color: "white", padding: "20px" }}>Loading design...</div>;
 
   const displayImageUrl = customImageUrl ? customImageUrl : design.imageUrl;
 
@@ -258,9 +262,7 @@ Country: ${countryCode}`
           </button>
         </form>
       )}
-      {showPayPal && (
-        <div id="paypal-button-container" style={{ marginTop: "20px" }}></div>
-      )}
+      {showPayPal && <div id="paypal-button-container" style={{ marginTop: "20px" }} />}
       {showDeclineForm && (
         <form onSubmit={handleFeedbackSubmit} style={{ marginTop: "20px" }}>
           <h2 style={{ color: "white" }}>Decline Feedback</h2>
@@ -284,7 +286,7 @@ Country: ${countryCode}`
             placeholder="What do you not like about the design? What would you change?"
             value={declineFeedback}
             onChange={(e) => setDeclineFeedback(e.target.value)}
-            style={{ width: "100%", height: "100px", marginBottom: "10px" }}
+            style={{ width: "100%", height: "100px", marginBottom: "10px", padding: "8px" }}
             required
           ></textarea>
           <button type="submit" className="design-button" style={{ marginTop: "10px" }}>
