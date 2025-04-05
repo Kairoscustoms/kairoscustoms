@@ -8,12 +8,12 @@ function DesignApproval() {
   const queryParams = new URLSearchParams(location.search);
   const clientName = queryParams.get("clientName") || "Valued Client";
   const price = queryParams.get("price") || "Price not set";
-  const customImageUrl = queryParams.get("imageUrl");
+  const customImageUrl = queryParams.get("imageUrl"); // e.g., "/AS_DESIGN.png"
   const [design, setDesign] = useState(null);
   const [error, setError] = useState(null);
   const [showPayPal, setShowPayPal] = useState(false);
   const [showShippingForm, setShowShippingForm] = useState(false);
-  
+
   const [shippingName, setShippingName] = useState("");
   const [shippingEmail, setShippingEmail] = useState("");
   const [shippingAddress, setShippingAddress] = useState("");
@@ -78,7 +78,16 @@ function DesignApproval() {
         }
       }).render("#paypal-button-container");
     }
-  }, [showPayPal, price, shippingName, shippingAddress, shippingCity, shippingState, shippingZip, shippingCountry]);
+  }, [
+    showPayPal,
+    price,
+    shippingName,
+    shippingAddress,
+    shippingCity,
+    shippingState,
+    shippingZip,
+    shippingCountry
+  ]);
 
   const handleApproveAndPay = () => {
     setShowShippingForm(true);
@@ -156,7 +165,11 @@ Country: ${countryCode}`
 
   if (error) return <div>Error: {error}</div>;
   if (!design)
-    return <div style={{ color: "white", padding: "20px" }}>Loading design...</div>;
+    return (
+      <div style={{ color: "white", padding: "20px" }}>
+        Loading design...
+      </div>
+    );
 
   const displayImageUrl = customImageUrl ? customImageUrl : design.imageUrl;
 
@@ -169,7 +182,9 @@ Country: ${countryCode}`
         alt="Design preview"
         style={{ maxWidth: "100%", height: "auto", marginBottom: "20px" }}
       />
-      <p className="design-price" style={{ color: "white" }}>Price: {price}</p>
+      <p className="design-price" style={{ color: "white" }}>
+        Price: {price}
+      </p>
       <div className="button-container">
         <button className="design-button" onClick={handleApproveAndPay}>
           Approve &amp; Pay
@@ -269,7 +284,7 @@ Country: ${countryCode}`
             placeholder="What do you not like about the design? What would you change?"
             value={declineFeedback}
             onChange={(e) => setDeclineFeedback(e.target.value)}
-            style={{ width: "100%", height: "100px", marginBottom: "10px", padding: "8px" }}
+            style={{ width: "100%", height: "100px", marginBottom: "10px" }}
             required
           ></textarea>
           <button type="submit" className="design-button" style={{ marginTop: "10px" }}>
