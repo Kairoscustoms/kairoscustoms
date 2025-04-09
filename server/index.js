@@ -15,7 +15,7 @@ app.use(express.urlencoded({ extended: true }));
 const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
 
-app.post("/send-email", upload.array("images"), async (req, res) => {
+app.post("/send-email", upload.none(), async (req, res) => {
   const { name, email, message } = req.body;
   if (!name || !email || !message) {
     return res.status(400).json({ error: "Missing required fields" });
@@ -23,8 +23,8 @@ app.post("/send-email", upload.array("images"), async (req, res) => {
   let transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
-      user: process.env.EMAIL_USER,
-      pass: process.env.EMAIL_PASS
+      user: "customskairos@gmail.com",
+      pass: "bktyahkkjaqmdeov"
     },
     tls: {
       rejectUnauthorized: false
@@ -33,7 +33,7 @@ app.post("/send-email", upload.array("images"), async (req, res) => {
     debug: true
   });
   let mailOptions = {
-    from: process.env.EMAIL_USER,
+    from: "customskairos@gmail.com",
     to: "customskairos@gmail.com",
     subject: "New Custom Order Request",
     html: `<h2>New Request from ${name}</h2>
@@ -56,23 +56,19 @@ app.get("/api/design/:id", (req, res) => {
     id: designId,
     name: "Custom Design",
     description: "Design mockup for a valued client.",
-    imageUrl: "/sample_dsn.png"
+    imageUrl: "/TYM_design.png"
   };
   res.json(designData);
-});
-
-app.get("/test", (req, res) => {
-  res.json({ message: "Test endpoint working" });
-});
-
-app.get("/", (req, res) => {
-  res.redirect("/design/123?clientName=Alice+Smith&price=$10&imageUrl=/AS_DESIGN.png");
 });
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "../client/build")));
   app.get("*", (req, res) => {
     res.sendFile(path.resolve(__dirname, "../client/build", "index.html"));
+  });
+} else {
+  app.get("/", (req, res) => {
+    res.send("API is running on port " + PORT);
   });
 }
 
