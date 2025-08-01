@@ -7,7 +7,10 @@
   "scripts": {
     "dev": "nodemon server/index.js",
     "start": "node server/index.js",
-    "postinstall": "cd client && npm install && npm run build"
+    "postinstall": "cd client && npm install && npm run build",
+    "client-install": "npm install --prefix client",
+    "client-build": "npm run build --prefix client",
+    "heroku-postbuild": "npm run client-install && npm run client-build"
   },
   "dependencies": {
     "express": "^4.21.2",
